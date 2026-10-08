@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">My Application</string>
+
+    <string name="password_label">Senha</string>
+    <string name="password_placeholder">Digite sua senha</string>
+    <string name="show_password">Mostrar senha</string>
+    <string name="hide_password">Ocultar senha</string>
+
+    <string name="pagination_page">Página %1$d de %2$d</string>
+    <string name="previous_page">Página anterior</string>
+    <string name="next_page">Próxima página</string>
 </resources>

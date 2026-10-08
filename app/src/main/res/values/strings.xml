@@ -1,12 +1,44 @@
 <resources>
-    <string name="app_name">My Application</string>
-
+    <string name="app_name">CodeHub</string>
     <string name="password_label">Senha</string>
     <string name="password_placeholder">Digite sua senha</string>
     <string name="show_password">Mostrar senha</string>
     <string name="hide_password">Ocultar senha</string>
-
     <string name="pagination_page">Página %1$d de %2$d</string>
     <string name="previous_page">Página anterior</string>
     <string name="next_page">Próxima página</string>
+    <string name="community">Comunidade</string>
+    <string name="user_name">Luiza Costa</string>
+    <string name="welcome_title">Seu próximo passo começa aqui.</string>
+    <string name="welcome_message">Olá, Luiza. Tem gente aprendendo com a mesma dúvida que você.</string>
+    <string name="post_placeholder">Qual é sua dúvida de hoje, Luiza?</string>
+    <string name="feed">Feed</string>
+    <string name="communities">Comunidades</string>
+    <string name="chat_ai">Chat IA</string>
+    <string name="analyze_code">Analisar Código</string>
+    <string name="post_author">Rafael Almeida</string>
+    <string name="post_date">2 out. 2026 · 09:42</string>
+    <string name="post_title">Como resolver conflito de merge no Git?</string>
+    <string name="post_body">Estou tentando fazer um pull da main e… o Git apontou um conflito no mesmo arquivo que eu alterei. Como resolvo sem perder meu trabalho?</string>
+    <string name="comments">12 curtidas</string>
+    <string name="responses">3 comentários</string>
+    <string name="notifications">Notificações</string>
+    <string name="search_placeholder">Pesquisar dúvidas, pessoas e comunidades</string>
+    <string name="publication_preview_status">Prévia · ainda não publicada</string>
+    <string name="publication_preview_title">Quando usar StateFlow no ViewModel?</string>
+    <string name="publication_preview_body_first">Estou criando uma tela Android com Kotlin e MVVM. Hoje uso LiveData para observar o estado da interface, mas vi exemplos com StateFlow.</string>
+    <string name="publication_preview_body_second">Em que situações vale fazer essa troca? Existe algum cuidado com o ciclo de vida ao coletar o fluxo na tela?</string>
+    <string name="answer_author">Marina Oliveira</string>
+    <string name="answer_author_details">Desenvolvedora Android · 10:05</string>
+    <string name="answer_helpful_badge">Resposta útil</string>
+    <string name="answer_body">StateFlow funciona muito bem quando você quer expor o estado atual da tela de forma reativa. No Android, colete o fluxo com repeatOnLifecycle para interromper a coleta quando a tela não estiver visível e evitar trabalho desnecessário.</string>
+    <string name="answer_useful_count">Útil · %1$d</string>
+    <string name="answer_reply">Responder</string>
+    <string name="community_card_author">Rafael Almeida</string>
+    <string name="community_card_meta">Android · 2 out.</string>
+    <string name="community_card_title">StateFlow ou LiveData no ViewModel?</string>
+    <string name="community_card_summary">Estou começando com MVVM. Como escolher a forma de observar o estado da tela e respeitar o ciclo de vida?</string>
+    <string name="community_card_tag_language">Kotlin</string>
+    <string name="community_card_tag_level">Iniciantes</string>
+    <string name="community_card_action">Abrir conversa</string>
 </resources>

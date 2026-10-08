@@ -37,7 +37,6 @@ fun SearchBar(
     modifier: Modifier = Modifier
 ) {
     val placeholder = stringResource(R.string.search_placeholder)
-
     Row(
         modifier = modifier
             .fillMaxWidth()

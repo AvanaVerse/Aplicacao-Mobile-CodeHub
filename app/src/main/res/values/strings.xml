@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">CodeHub</string>
+    <string name="password_label">Senha</string>
+    <string name="password_placeholder">Digite sua senha</string>
+    <string name="show_password">Mostrar senha</string>
+    <string name="hide_password">Ocultar senha</string>
+    <string name="pagination_page">Página %1$d de %2$d</string>
+    <string name="previous_page">Página anterior</string>
+    <string name="next_page">Próxima página</string>
     <string name="community">Comunidade</string>
     <string name="user_name">Luiza Costa</string>
     <string name="welcome_title">Seu próximo passo começa aqui.</string>

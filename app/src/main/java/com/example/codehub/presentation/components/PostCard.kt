@@ -1,6 +1,7 @@
 package com.example.codehub.presentation.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -8,9 +9,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.ChatBubbleOutline
+import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,32 +28,50 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.codehub.R
+import com.example.codehub.presentation.components.chips.InfoTag
 import com.example.codehub.presentation.theme.MyApplicationTheme
 
 @Composable
-fun PostCard(modifier: Modifier = Modifier) {
+fun PostCard(
+	modifier: Modifier = Modifier,
+	authorName: String? = null,
+	metadata: String? = null,
+	title: String? = null,
+	bodyParagraphs: List<String>? = null,
+	tags: List<String> = emptyList(),
+	likesLabel: String? = null,
+	responsesLabel: String? = null
+) {
+	val resolvedAuthor = authorName ?: stringResource(R.string.user_name)
+	val resolvedMetadata = metadata ?: stringResource(R.string.publication_preview_status)
+	val resolvedTitle = title ?: stringResource(R.string.publication_preview_title)
+	val resolvedParagraphs = bodyParagraphs ?: listOf(
+		stringResource(R.string.publication_preview_body_first),
+		stringResource(R.string.publication_preview_body_second)
+	)
+
 	Surface(
 		modifier = modifier.fillMaxWidth(),
-		shape = RoundedCornerShape(22.dp),
+		shape = RoundedCornerShape(18.dp),
 		color = Color.White,
 		border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFFE1E5ED)),
 		shadowElevation = 1.dp
 	) {
-		Column(modifier = Modifier.padding(20.dp)) {
+		Column(modifier = Modifier.padding(14.dp)) {
 			Row(verticalAlignment = Alignment.CenterVertically) {
-				UserAvatar(initials = "LC", size = 42.dp)
-				Spacer(modifier = Modifier.width(12.dp))
+				UserAvatar(initials = resolvedAuthor.split(" ").mapNotNull { it.firstOrNull()?.toString() }.take(2).joinToString(""), size = 34.dp)
+				Spacer(modifier = Modifier.width(9.dp))
 				Column {
 					Text(
-						text = stringResource(R.string.user_name),
+						text = resolvedAuthor,
 						color = Color(0xFF252A38),
-						fontSize = 16.sp,
+						fontSize = 13.sp,
 						fontWeight = FontWeight.SemiBold
 					)
 					Text(
-						text = stringResource(R.string.publication_preview_status),
+						text = resolvedMetadata,
 						color = Color(0xFF737B8F),
-						fontSize = 14.sp
+						fontSize = 11.sp
 					)
 				}
 			}
@@ -62,26 +85,63 @@ fun PostCard(modifier: Modifier = Modifier) {
 			)
 
 			Text(
-				text = stringResource(R.string.publication_preview_title),
+				text = resolvedTitle,
 				color = Color(0xFF252A38),
-				fontSize = 20.sp,
-				lineHeight = 27.sp,
+				fontSize = 16.sp,
+				lineHeight = 23.sp,
 				fontWeight = FontWeight.Bold
 			)
-			Text(
-				text = stringResource(R.string.publication_preview_body_first),
-				modifier = Modifier.padding(top = 10.dp),
-				color = Color(0xFF697286),
-				fontSize = 16.sp,
-				lineHeight = 25.sp
-			)
-			Text(
-				text = stringResource(R.string.publication_preview_body_second),
-				modifier = Modifier.padding(top = 24.dp),
-				color = Color(0xFF697286),
-				fontSize = 16.sp,
-				lineHeight = 25.sp
-			)
+			resolvedParagraphs.forEachIndexed { index, paragraph ->
+				Text(
+					text = paragraph,
+					modifier = Modifier.padding(top = if (index == 0) 10.dp else 16.dp),
+					color = Color(0xFF252A38),
+					fontSize = 13.sp,
+					lineHeight = 20.sp
+				)
+			}
+
+			if (tags.isNotEmpty()) {
+				Row(
+					modifier = Modifier.padding(top = 10.dp),
+					horizontalArrangement = Arrangement.spacedBy(6.dp)
+				) {
+					tags.forEach { tag -> InfoTag(text = tag) }
+				}
+			}
+
+			if (likesLabel != null || responsesLabel != null) {
+				Row(
+					modifier = Modifier.padding(top = 10.dp),
+					verticalAlignment = Alignment.CenterVertically,
+					horizontalArrangement = Arrangement.spacedBy(16.dp)
+				) {
+					if (likesLabel != null) {
+						Row(verticalAlignment = Alignment.CenterVertically) {
+							Icon(
+								imageVector = Icons.Outlined.FavoriteBorder,
+								contentDescription = null,
+								tint = Color(0xFF737B8F),
+								modifier = Modifier.size(16.dp)
+							)
+							Spacer(modifier = Modifier.width(5.dp))
+							Text(text = likesLabel, color = Color(0xFF737B8F), fontSize = 11.sp)
+						}
+					}
+					if (responsesLabel != null) {
+						Row(verticalAlignment = Alignment.CenterVertically) {
+							Icon(
+								imageVector = Icons.Outlined.ChatBubbleOutline,
+								contentDescription = null,
+								tint = Color(0xFF737B8F),
+								modifier = Modifier.size(16.dp)
+							)
+							Spacer(modifier = Modifier.width(5.dp))
+							Text(text = responsesLabel, color = Color(0xFF737B8F), fontSize = 11.sp)
+						}
+					}
+				}
+			}
 		}
 	}
 }
